@@ -135,8 +135,8 @@ namespace sdkBluetoothA2AWP8CS
                 var message = await GetMessage();
 
                 // Add to chat
-                UpdateChatBox(message, true);
-
+                //UpdateChatBox(message, true);
+                throttleText.Text = "Throttle: "+message;
                 // Start listening for the next message.
                 ListenForIncomingMessage();
             }
@@ -162,6 +162,7 @@ namespace sdkBluetoothA2AWP8CS
             uint messageLen = (uint)_dataReader.ReadInt32();
             await _dataReader.LoadAsync(messageLen);
             return _dataReader.ReadString(messageLen);
+            
         }
 
         private void FindPeers_Tap(object sender, GestureEventArgs e)
